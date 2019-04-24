@@ -12,6 +12,6 @@ CREATE TABLE IF NOT EXISTS orders {
 }
 
 CREATE TABLE IF NOT EXISTS dishes_order {
-  order_id INTEGER,
+  orders_id INTEGER,
   dishes_id
 }
