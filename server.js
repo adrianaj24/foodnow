@@ -49,12 +49,24 @@ app.get("/user", (req, res) => {
 });
 
 // order in progress 
-app.get("/newOrder", (req, res) => {
-  res.render("newOrder")
+app.get("/neworder", (req, res) => {
+  res.render("index")
 });
 
-// 
-app.get("")
+// checkout order  
+app.get("/checkout", (req, res) => {
+  res.render("index")
+});
+
+// summary page 
+app.get("/summary", (req, res) => {
+  res.render("index")
+});
+
+app.post("/delete", (req, res) => {
+  res.redirect("index");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
