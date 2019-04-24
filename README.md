@@ -9,6 +9,7 @@
 4. Add a remote for your origin: `git remote add origin <your github repo URL>`
 5. Push to the new origin: `git push -u origin master`
 6. Verify that the skeleton code now shows up in your repo on GitHub
+7. Final step
 
 ## Getting Started
 
