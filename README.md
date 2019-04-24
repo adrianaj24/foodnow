@@ -27,3 +27,69 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+
+
+## PLAN
+
+### Database
+
+- Menu Item
+- Split by class (food, drink, dessert)
+- Name, description (food and dessert), price
+
+DISHES TABLE
+ID | NAME     | DESC   |  PRICE
+1  | option A | desc A | 99
+2  | option B | desc B | 9
+3  | option C | desc C | 65
+4  | option D | desc D | 44
+
+ORDERS TABLE
+ID | NAME     | PHONE #
+1  | Mike     | 111-111-111
+2  | Adriana  | 222-222-222
+3  | Mariana  | 333-333-333
+
+DISHES_ORDER TABLE
+ORDER_ID | DISHES ID
+   1     |    1
+   1     |    2
+   1     |    2
+   2     |    1
+   2     |    4
+   2     |    4
+   2     |    3
+
+
+### Routes
+
+- Navbar
+* Login (self)
+
+- Menu
+- Cart
+- Checkout
+
+### Main Page
+
+- Basic layout
+- Nav Bar
+* Restaurant info
+* Login button
+- Dishes
+* food (name, description, price)
+* dessert (name, description, price)
+* drinks (name, price)
+
+- Cart
+* Dishes info
+* total (sum of dishes price)
+* checkout + phone number area
+
+### Summary Page
+
+- Order Time Countdown 
+- Purchase order summary
+
+### API
+
