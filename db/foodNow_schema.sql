@@ -16,7 +16,5 @@ CREATE TABLE IF NOT EXISTS dishes_orders {
   dishes_id INTEGER
 };
 
-SELECT orders.id, dishes.name, dishes.price
-FROM orders JOIN dishes_orders ON orders.id = orders_id
-JOIN dishes ON dishes_id = dishes.id
-WHERE orders.name = 'Mike';
+
+
