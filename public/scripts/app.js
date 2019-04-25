@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  function createMenuElement (menuData) {
+  function createDishElement (menuData) {
 
     const dishName = menuData.name;
     const dishDesc = menuData.description;
@@ -8,27 +8,75 @@ $(document).ready(function() {
 
     const $createName = $('<div>').addClass('menu-item-name').text(dishName);
     const $createDesc = $('<div>').addClass('menu-item-description').text(dishDesc);
-    const $createPrice = $('<div>').addClass('menu-item-price').text(dishPrice);
+    const $createPrice = $('<div>').addClass('menu-item-price').text('$'+dishPrice);
+    const $createButton = $('<button>').addClass('btn btn-outline-secondary').text('Add');
 
   const $dish = $('<div>').addClass('menu-item').append($createName)
+                                                .append($createPrice)
                                                 .append($createDesc)
-                                                .append($createPrice);
+                                                .append($createButton);
 
   return $dish
 
   }
 
+  function createDrinkElement (menuData) {
+
+    const drinkName = menuData.name;
+    const dishPrice = menuData.price;
+
+    const $createName = $('<div>').addClass('menu-item-name').text(drinkName);
+    const $createPrice = $('<div>').addClass('menu-item-price').text('$'+drinkPrice);
+    const $createButton = $('<button>').addClass('btn btn-outline-secondary').text('Add');
+
+  const $dish = $('<div>').addClass('menu-item').append($drinkName)
+                                                .append($dirnkPrice)
+                                                .append($createButton);
+
+  return $dish
+
+  }
+
+  function createDessertElement (menuData) {
+
+    const dessertName = menuData.name;
+    const dessertDesc = menuData.description;
+    const dessertPrice = menuData.price;
+
+    const $createName = $('<div>').addClass('menu-item-name').text(dishName);
+    const $createDesc = $('<div>').addClass('menu-item-description').text(dishDesc);
+    const $createPrice = $('<div>').addClass('menu-item-price').text('$'+dishPrice);
+    const $createButton = $('<button>').addClass('btn btn-outline-secondary').text('Add');
+
+  const $dish = $('<div>').addClass('menu-item').append($createName)
+                                                .append($createPrice)
+                                                .append($createDesc)
+                                                .append($createButton);
+
+  return $dish
+
+  }
+
+
   function renderMenu(menuArr) {
-    console.log("This is menuarr: ",menuArr);
+    // console.log("This is menuarr: ",menuArr);
     menuArr.forEach( (menuObj) => {
-      $('.menu-section-title').append(createMenuElement(menuObj))
+      console.log("This is menuObj: ", menuObj);
+
+      if (menuObj.type === 'main'){
+        $('.menu-section').append(createDishElement(menuObj))
+      } else if (menuObj.type === 'drink') {
+        $('.menu-section').append(createDrinkElement(menuObj))
+      } else if (menuObj.type === 'dessert') {
+        $('.menu-section').append(createDessertElement(menuObj))
+      }
     })
   }
 
 $( function() {
 
   $.ajax({
-    url: "/dishes",
+    url: "/menu",
     type: "GET",
     success: function(data) {
       console.log("this is data: ", data);

@@ -39,8 +39,14 @@ app.use(express.static("public"));
 // app.use("/api/users", usersRoutes(knex));
 
 // Home page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/menu", (req, res) => {
+  knex.select("dishes.name","dishes.description","dishes.price")
+        .from("dishes")
+        // req.params.type
+        .where("dishes.type","=","main")
+        .then( (moreResults) => {
+          res.json(moreResults)
+        })
 });
 
 // order in progress
@@ -48,15 +54,7 @@ app.get("/neworder", (req, res) => {
   res.render("neworder")
 });
 
-app.get("/dishes", (req, res) => {
-  knex.select("dishes.name","dishes.description","dishes.price")
-        .from("dishes")
-        .where("dishes.type","=","main")
-        .then( (moreResults) => {
-          res.json(moreResults)
-        })
-  // res.render("index")
-});
+
 
 // checkout order
 app.get("/checkout", (req, res) => {
