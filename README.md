@@ -31,6 +31,13 @@
 - Node 5.10.x or above
 - NPM 3.8.x or above
 
+## Database Update
+
+- On your terminal type: npm run knex migrate:latest
+- Press enter
+- After, type: npm run knex seed:run
+- Now you should have the most up to date db
+
 
 ## PLAN
 
@@ -99,4 +106,5 @@ ORDER_ID | DISHES ID
 # Twilio
 
 Free Phone #: 647 799 3850
+
 
