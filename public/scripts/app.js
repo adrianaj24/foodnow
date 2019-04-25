@@ -12,3 +12,4 @@ $(() => {
   //   $("<div>").text(bill).appendTo($("body"));
   // })
 });
+
