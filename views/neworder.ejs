@@ -41,21 +41,25 @@
                   <form id="options" method="POST" action="/checkout">
                     <span id="charNum" class="counter"> 1 x Option A $</span>
                     <input id="add-item" type="submit" value="+">
-                    <input id="remove-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-">
                     <span id="charNum" class="counter"> 1 x Option A $</span>
                     <input id="add-item" type="submit" value="+">
-                    <input id="remove-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-">
                     <span id="charNum" class="counter"> 1 x Option A $</span>
                     <input id="add-item" type="submit" value="+">
-                    <input id="remove-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-">
                   </form>
             </div>
 
             <div>
           <h2>Personal info</h2>
           <form action="/checkout">
-            Name: <input type="text" name="Name" ><br>
-            Phone: <input type="text" name="Phone"><br>
+            <tr>
+              <td>Name: </td><input type="text" name="Name" ><br>
+            </tr>
+            <tr>
+              <td>Phone: </td><input type="text" name="Phone"><br>
+            </tr>
             </form>
           </div>
 
