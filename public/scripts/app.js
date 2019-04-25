@@ -5,7 +5,7 @@ $(() => {
   }).done((users) => {
     for(user of users) {
       $("<div>").text(user.name).appendTo($("body"));
-      $("<div>").text(user.price).appendTo($("body"));
+      $("<div>").text(user.sum).appendTo($("body"));
     }
   });
   // .done( (bill) => {
