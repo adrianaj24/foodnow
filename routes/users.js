@@ -16,7 +16,7 @@ module.exports = (knex) => {
         .from("dishes")
         .where("dishes.type","=","main")
         .then( (moreResults) => {
-          res.json(moreResults)
+          // res.json(moreResults)
           console.log("Result from query: ",moreResults);
         });
   });

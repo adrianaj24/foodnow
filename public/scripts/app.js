@@ -18,20 +18,40 @@ $(document).ready(function() {
 
   }
 
+  function renderMenu(menuArr) {
+    console.log("This is menuarr: ",menuArr);
+    menuArr.forEach( (menuObj) => {
+      $('.menu-section-title').append(createMenuElement(menuObj))
+    })
+  }
 
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/"
-    }).done((foods) => {
-      for(food of foods) {
-        $('.menu-section-title').append(createMenuElement(food));
-      }
-    });
+$( function() {
+
+  $.ajax({
+    url: "/dishes",
+    type: "GET",
+    success: function(data) {
+      console.log("this is data: ", data);
+      renderMenu(data);
+    }
+  })
+})
+
+
+
+
+  // $(() => {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/api/users"
+  //   }).done((foods) => {
+  //     for(food of foods) {
+  //     }
+  //   });
     // .done( (bill) => {
     //   $("<div>").text(bill).appendTo($("body"));
     // })
-  });
+  // });
 
 
 

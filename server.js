@@ -42,18 +42,28 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("index");
 });
-                                  
-// order in progress 
+
+// order in progress
 app.get("/neworder", (req, res) => {
   res.render("index")
 });
 
-// checkout order  
+app.get("/dishes", (req, res) => {
+  knex.select("dishes.name","dishes.description","dishes.price")
+        .from("dishes")
+        .where("dishes.type","=","main")
+        .then( (moreResults) => {
+          res.json(moreResults)
+        })
+  // res.render("index")
+});
+
+// checkout order
 app.get("/checkout", (req, res) => {
   res.render("index")
 });
 
-// summary page 
+// summary page
 app.get("/summary", (req, res) => {
   res.render("index")
 });
