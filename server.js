@@ -36,11 +36,35 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+// user form 
+app.get("/user", (req, res) => {
+  res.render("index");
+});
+
+// order in progress 
+app.get("/neworder", (req, res) => {
+  res.render("index")
+});
+
+// checkout order  
+app.get("/checkout", (req, res) => {
+  res.render("index")
+});
+
+// summary page 
+app.get("/summary", (req, res) => {
+  res.render("index")
+});
+
+app.post("/delete", (req, res) => {
+  res.redirect("index");
 });
 
 app.listen(PORT, () => {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+      <section class="new-order">
+
+          <h2>Place Order</h2>
+
+          <form id="send-order" method="POST" action="/orders">
+            <textarea  class="order-input"name="text" placeholder="What would you like to order?"></textarea>
+            <input id="order-button" type="submit" value="Place order">
+            <span id="timer" class="counter">20</span>
+            <p class="error"></p>
+          </form>
+
+      </section>
+  </body>
+</html>

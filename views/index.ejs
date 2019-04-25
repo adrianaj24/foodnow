@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>FoodNow - Home Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <nav id="nav-bar">
+        <img class="logo" src="/images/restaurant.hpg" >
+        <span class="header">FoodNow</span>
+        <span class="header">Address</span>
+    </nav>
+
+    <section class="menu-container">    
+        <article class="menu">
+          <header>
+            <h3>Menu</h3>
+          </header>
+          <p class="menu-body">Click on each item to add to cart</p>
+          <p class="menu-body">Dish Name</p>
+          <p class="menu-body">Dish Description</p>
+          <p class="menu-body">Dish Price</p>
+          <footer>
+            <span class="order_time">minutes ago</span>
+          </footer>
+        
+        </article>
+
+    </section>
+
+
   </body>
 </html>

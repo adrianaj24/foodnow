@@ -10,6 +10,8 @@
 5. Push to the new origin: `git push -u origin master`
 6. Verify that the skeleton code now shows up in your repo on GitHub
 7. Final step
+8. Did it change?
+
 
 ## Getting Started
 
