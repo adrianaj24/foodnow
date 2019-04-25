@@ -42,12 +42,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-// user form 
-app.get("/user", (req, res) => {
-  res.render("index");
-});
-
+                                  
 // order in progress 
 app.get("/neworder", (req, res) => {
   res.render("index")
