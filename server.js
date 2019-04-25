@@ -45,12 +45,12 @@ app.get("/", (req, res) => {
                                   
 // order in progress 
 app.get("/neworder", (req, res) => {
-  res.render("index")
+  res.render("neworder")
 });
 
 // checkout order  
 app.get("/checkout", (req, res) => {
-  res.render("index")
+  res.render("checkout")
 });
 
 // summary page 
