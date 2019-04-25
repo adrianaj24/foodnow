@@ -20,9 +20,4 @@ exports.seed = function(knex, Promise) {
         knex('dishes_orders').insert({orders_id: 2, dishes_id: 2})
       ]);
     });
-  .then(function() {
-    return Promise.all ([
-      knex('')
-      ])
-    })
 };
