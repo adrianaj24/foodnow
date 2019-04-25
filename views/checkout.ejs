@@ -12,21 +12,33 @@
   </head>
 
   <body>
-    <h1>FoodNow</h1>
+
+      <nav id="nav-bar">
+        
+          <img class="logo"
+              src="https://www.mycutegraphics.com/graphics/cupcake/black-white-boy-with-cupcake.html">
+          <span class="header">FoodNow</span>
+      
+          <form id="main_pg_button" method="GET" action="/index">
+            <button id="nav-button" type="button">Home page
+                <p id="burger-emoji">🍔</p>
+            </button>
+          </form>
+
+          <form id="send-tweets" method="POST" action="/checkout">
+              <button id="nav-button" type="button">Cart
+                  <p id="burger-emoji">🍔</p>
+              </button>
+          </form>
+      </nav>
+
+      
+    <h2> GET READY FOR SOME GOOD FOOD</h2>
     <h4>FoodNow</h4>
-
-    <section class="checkout">
-        <h2>Place Order</h2>
-
-        <form id="send-order" method="POST" action="/orders">
-          <textarea  class="order-input"name="text" placeholder="What would you like to order?"></textarea>
-
-          <input id="order-button" type="submit" value="Place order">
-          <span id="timer" class="counter">20</span>
-          <p class="error"></p>
-        </form>
-
-    </section>
+    <p>The restaurant is now preparing your order.</p>
+    <p>We will send you a message on how long is going to take for your order to be ready.</p>
+        
+    <h4>ENJOY!</h4>
 
 
   </body>
