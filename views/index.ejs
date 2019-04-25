@@ -12,16 +12,14 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
   <% include partials/nav %>
-    
+  <body>
+
     <section class="menu-container">    
         <div class="menu-body">
-          <!-- Section starts: Main Course -->
           <div class="menu-section">
-            <h2 class="menu-section-title">MAIN COURSE</h2>
-            <!-- Item starts -->
             <div class="menu-item">
+                <h2 class="menu-section-title">MAIN COURSE</h2>
               <div class="menu-item-name">
                 Dish 1
               </div>
@@ -31,9 +29,14 @@
               <div class="menu-item-description">
                 DESCRIPTION OF ITEM
               </div>
+              <form method="post" action="">
+                <div>
+                  <label for="name">Quantity</label>
+                  <input type="text" name="Quantity" id="quantity" value="3">
+                </div>
+                </form>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Dish 2
@@ -45,8 +48,7 @@
                 DESCRIPTION OF ITEM
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Dish 3
@@ -58,8 +60,7 @@
                 DESCRIPTION OF ITEM
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Dish 4 
@@ -71,13 +72,11 @@
                 DESCRIPTION OF ITEM
               </div>
             </div>
-            <!-- Item ends -->
           </div>
-          <!-- Section ends: Main Course -->
-          <!-- Section starts: Drinks -->
+          
+
           <div class="menu-section">
             <h2 class="menu-section-title">DRINKS</h2>
-            <!-- Item starts -->
             <div class="menu-item">
               <div class="menu-item-name">
                 Drink 1
@@ -86,8 +85,8 @@
                 $10
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+            
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Drink 2
@@ -96,8 +95,9 @@
                 $10
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+            
+
+            
             <div class="menu-item">
               <div class="menu-item-name">
                 Drink 3 
@@ -106,8 +106,9 @@
                 $10
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+            
+
+            
             <div class="menu-item">
               <div class="menu-item-name">
                 Drink 4 
@@ -116,15 +117,13 @@
                 $10
               </div>
             </div>
-            <!-- Item ends -->
           </div>
-          <!-- Section ends: Drinks -->
+
+
         </div>
         <div class="menu-body">
-          <!-- Section starts: Appetizers -->
           <div class="menu-section">
             <h2 class="menu-section-title">DESSERT</h2>
-            <!-- Item starts -->
             <div class="menu-item">
               <div class="menu-item-name">
                 Dessert 1 
@@ -136,8 +135,8 @@
                 DESCRIPTION DESSERT 1 
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+            
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Dessert 2
@@ -149,8 +148,8 @@
                 DESCRIPTION DESSERT 2 
               </div>
             </div>
-            <!-- Item ends -->
-            <!-- Item starts -->
+
+
             <div class="menu-item">
               <div class="menu-item-name">
                 Dessert 3 
@@ -162,8 +161,6 @@
                 DESCRIPTION DESSERT 3 
               </div>
             </div>
-            <!-- Item ends -->
-
     </section>
 
 
