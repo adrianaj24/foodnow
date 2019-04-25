@@ -5,24 +5,86 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/neworder.scss" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-      <section class="new-order">
-
-          <h2>Place Order</h2>
-
-          <form id="send-order" method="POST" action="/orders">
-            <textarea  class="order-input"name="text" placeholder="What would you like to order?"></textarea>
-            <input id="order-button" type="submit" value="Place order">
-            <span id="timer" class="counter">20</span>
-            <p class="error"></p>
+      <nav id="nav-bar">
+        
+          <img class="logo"
+              src="https://www.mycutegraphics.com/graphics/cupcake/black-white-boy-with-cupcake.html">
+          <span class="header">FoodNow</span>
+      
+          <form id="main_pg_button" method="GET" action="/index">
+            <button id="nav-button" type="button">Home page
+                <p id="burger-emoji">🍔</p>
+            </button>
           </form>
 
+          <form id="send-tweets" method="POST" action="/checkout">
+              <button id="nav-button" type="button">Checkout
+                  <p id="burger-emoji">🍔</p>
+              </button>
+          </form>
+      
+      </nav>
+
+      <div><img src="restaurant.jpg" alt="Restaurant_pic" width="500" height="600"></div>
+    
+      <section class="new-order">
+
+          <div class="summary_container">
+                  <h2>Summary</h2>
+                  <form id="options" method="POST" action="/checkout">
+                    <span id="charNum" class="counter"> 1 x Option A </span>
+                    <span id="charNum" class="counter">$ 140</span>
+                    <input id="add-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-"><br>
+                    <span id="charNum" class="counter"> 1 x Option A </span>
+                    <span id="charNum" class="counter">$ 140</span>
+                    <input id="add-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-"><br>
+                    <span id="charNum" class="counter"> 1 x Option A </span>
+                    <span id="charNum" class="counter">$ 140</span>
+                    <input id="add-item" type="submit" value="+">
+                    <input id="remove-item" type="submit" value="-"><br>
+                  </form>
+
+
+                  <form id="totals" method="GET" action="/checkout">
+                    <span class="subtotal_text"> Subtotal</span>
+                    <span id="subtotal_amt" class="subtotal">$ 140</span><br>
+                    
+                    <span class="subtotal_text"> Tax </span>
+                    <span id="tax_amt" class="subtotal">$ 140</span><br>
+                    
+                    <span class="subtotal_text"> Total </span>
+                    <span id="total_amt" class="subtotal">$ 140</span>
+
+
+
+                  </form>
+            </div>
+
+            <div>
+          <h2>Personal info</h2>
+          <form action="/checkout">
+            <table style="width:30%">
+            <tr>
+              <td>Name: <input type="text" name="Name" ></td><br>
+            </tr>
+            <tr>
+              <td>Phone: <input type="text" name="Phone"></td><br>
+            </tr>
+          </table>
+            </form>
+
+          </div>
+
+          <input type="submit" value="Checkout">
       </section>
   </body>
 </html>
