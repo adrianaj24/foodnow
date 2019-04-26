@@ -39,7 +39,8 @@ app.use(express.static("public"));
 // app.use("/api/users", usersRoutes(knex));
 
 // Home page
-app.get("/", (req, res) => {
+app.get("/dishes", (req, res) => {
+  console.log('getting dishes route')
   knex.select("dishes.name","dishes.description","dishes.price", "dishes.type")
         .from("dishes")
         // req.params.type
@@ -62,7 +63,8 @@ app.get("/checkout", (req, res) => {
 });
 
 // summary page
-app.get("/summary", (req, res) => {
+app.get("/", (req, res) => {
+  console.log('getting / route')
   res.render("index")
 });
 
