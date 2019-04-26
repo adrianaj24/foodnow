@@ -88,23 +88,11 @@ $( function() {
   })
 })
 
-
-
-
-  // $(() => {
-  //   $.ajax({
-  //     method: "GET",
-  //     url: "/api/users"
-  //   }).done((foods) => {
-  //     for(food of foods) {
-  //     }
-  //   });
-    // .done( (bill) => {
-    //   $("<div>").text(bill).appendTo($("body"));
-    // })
-  // });
-
-
-
-
 })
+
+$(document).ready(function () {
+  $('.btn btn-outline-secondary').click(function () {
+    alert('hello');
+});
+});
+
