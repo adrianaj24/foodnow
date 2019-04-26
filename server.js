@@ -9,10 +9,18 @@ const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
 
+const http = require('http');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
+// Twilio API resources
+const accountSid = 'AC3e045c2e3e8c35dcd420edd9c8f49d97';
+const authToken = '507c961f2758f529c64a79b96384995e';
+const client = require('twilio')(accountSid, authToken);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -59,6 +67,17 @@ app.get("/neworder", (req, res) => {
 
 // checkout order
 app.get("/checkout", (req, res) => {
+
+  // Message to be sent to the restaurant
+  client.messages.create({
+     body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
+     from: '+16477993850',
+     to: '+16478714743',
+     statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
+   })
+                .then(message => console.log("This is message from checkout: "));
+
+
   res.render("checkout")
 });
 
@@ -68,6 +87,10 @@ app.get("/", (req, res) => {
   res.render("index")
 });
 
+app.post("/smsstatus", (req, res) => {
+  console.log("This is the sms status: ",req.body);
+});
+
 app.post('/buy_me', (req, res) => {
   res.send("checkout");
 });
@@ -75,6 +98,46 @@ app.post('/buy_me', (req, res) => {
 app.post("/delete", (req, res) => {
   res.redirect("index");
 });
+
+// TWILIO API
+app.post('/sms', (req, res) => {
+  //Message received from the restaurant
+  console.log("This is the req: ",req.body.Body);
+  const eta = req.body.Body;
+  // Sending message to the client with the ETA
+
+  const promise = client.messages.create({
+     body: `Your order will be ready in ${eta} minutes`,
+     from: '+16477993850',
+     to: '+16478714743',
+      statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
+   })
+  console.log("this is promise: ", promise);
+  promise.then(message => console.log("This is message from checkout: ",message));
+
+
+
+  // const twiml = new MessagingResponse();
+
+  // twiml.message('The Robots are coming! Head for the hills!');
+
+  // res.writeHead(200, {'Content-Type': 'text/xml'});
+  // res.end(twiml.toString());
+
+
+  // res.redirect("/smsuser");
+});
+
+app.get("/smsuser", (req, res) => {
+  client.messages.create({
+    body: 'Hello dear client, your food will be ready soon!',
+    from: '+16477993850',
+    to: '+12263162769'
+  })
+                .then(message => console.log("This is message from post", message));
+  res.redirect("/")
+})
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
