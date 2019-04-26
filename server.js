@@ -114,29 +114,7 @@ app.post('/sms', (req, res) => {
    })
   console.log("this is promise: ", promise);
   promise.then(message => console.log("This is message from checkout: ",message));
-
-
-
-  // const twiml = new MessagingResponse();
-
-  // twiml.message('The Robots are coming! Head for the hills!');
-
-  // res.writeHead(200, {'Content-Type': 'text/xml'});
-  // res.end(twiml.toString());
-
-
-  // res.redirect("/smsuser");
 });
-
-app.get("/smsuser", (req, res) => {
-  client.messages.create({
-    body: 'Hello dear client, your food will be ready soon!',
-    from: '+16477993850',
-    to: '+12263162769'
-  })
-                .then(message => console.log("This is message from post", message));
-  res.redirect("/")
-})
 
 
 app.listen(PORT, () => {
