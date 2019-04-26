@@ -58,6 +58,10 @@ app.get("/summary", (req, res) => {
   res.render("index")
 });
 
+app.post('/buy_me', (req, res) => {
+  res.send("checkout");
+});
+
 app.post("/delete", (req, res) => {
   res.redirect("index");
 });
