@@ -1,0 +1,47 @@
+#nav-bar {
+  background-color: #464545;
+  color: #e8fdff;
+  height: 120px;
+  padding-left: 2em;
+  padding-right: 2em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 666; }
+
+#nav-bar .logo {
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+  left: 10px; }
+
+#nav-bar .header {
+  line-height: 80px;
+  font-size: 200%;
+  font-weight: lighter;
+  right: 2em; }
+
+#nav-button {
+  background-color: #a79696;
+  border-radius: 5px;
+  border: 2px solid #f4f5f4;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  margin-top: .5em;
+  margin-right: 2em;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none; }
+
+#burger-emoji {
+  float: right;
+  margin: 0;
+  padding: 0 0 0 1rem; }
+
+#nav-button:hover {
+  background-color: #f0d7e6;
+  color: grey;
+  border: 2px solid grey; }

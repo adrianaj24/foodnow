@@ -39,11 +39,11 @@ app.use(express.static("public"));
 // app.use("/api/users", usersRoutes(knex));
 
 // Home page
-app.get("/menu", (req, res) => {
-  knex.select("dishes.name","dishes.description","dishes.price")
+app.get("/", (req, res) => {
+  knex.select("dishes.name","dishes.description","dishes.price", "dishes.type")
         .from("dishes")
         // req.params.type
-        .where("dishes.type","=","main")
+        // .where("dishes.type","=","main")
         .then( (moreResults) => {
           res.json(moreResults)
         })
@@ -64,6 +64,10 @@ app.get("/checkout", (req, res) => {
 // summary page
 app.get("/summary", (req, res) => {
   res.render("index")
+});
+
+app.post('/buy_me', (req, res) => {
+  res.send("checkout");
 });
 
 app.post("/delete", (req, res) => {
