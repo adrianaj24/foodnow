@@ -1,5 +1,19 @@
 var cart = {};
+
 $(document).ready(function () {
+
+  //check to see if there is a previous cart
+  if (localStorage.getItem('cart') !== null) {
+    cart = JSON.parse(localStorage.getItem('cart'))
+
+    //get the sum of all items
+    let sum = 0;
+    for (const item in cart) {
+      sum += cart[item].quantity
+    }
+    $('#count').empty();
+    $('#count').append(sum);
+  }
 
   function createDishElement (menuData) {
 
@@ -89,24 +103,38 @@ $(document).ready(function () {
 
 function addToCart(id, name, desc, price) {
   if (id in cart) {
+
     cart[id].quantity += 1;
   } else {
     cart[id] = {
+      id: id, 
       name: name,
       desc: desc,
       price: price,
       quantity: 1
     }
   }
+
   console.log(cart)
-  $('#count').empty();
-  var sum = 0; 
+  
+  let sum = 0;
   for (const item in cart) {
-    sum += cart[item].quantity 
-  }
+      sum += cart[item].quantity
+    }
+  $('#count').empty();
   $('#count').append(sum);
 
 }
 
-
-
+function clearCart()
+{
+  localStorage.setItem('cart', null);
+  cart = {};
+  window.location.reload();
+}
+//when the page is about to close
+window.addEventListener('beforeunload', (event) => {
+  console.log("setting before close");
+  localStorage.setItem('cart', null);
+  localStorage.setItem('cart', JSON.stringify(cart));
+});
