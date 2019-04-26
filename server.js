@@ -47,7 +47,7 @@ app.use(express.static("public"));
 // Home page
 app.get("/dishes", (req, res) => {
   console.log('getting dishes route')
-  knex.select("dishes.name","dishes.description","dishes.price", "dishes.type")
+  knex.select("dishes.id","dishes.name","dishes.description","dishes.price", "dishes.type")
         .from("dishes")
         // req.params.type
         // .where("dishes.type","=","main")
