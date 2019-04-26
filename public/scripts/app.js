@@ -126,8 +126,11 @@ function addToCart(id, name, desc, price) {
 
 }
 
-function clearCart()
-{
+function summaryCart() {
+  
+}
+
+function clearCart(){
   localStorage.setItem('cart', null);
   cart = {};
   window.location.reload();

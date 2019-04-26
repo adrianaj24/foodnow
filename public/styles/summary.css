@@ -1,4 +1,5 @@
 .row {
+  margin-top: 3rem;
   display: -ms-flexbox;
   /* IE10 */
   display: flex;
@@ -33,6 +34,7 @@
 }
 
 .container {
+  margin-top: 5rem;
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
