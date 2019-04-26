@@ -41,10 +41,14 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Mount all resource routes
-// app.use("/api/users", usersRoutes(knex));
+// Home Page
+app.get("/", (req, res) => {
+  console.log('getting / route')
+  res.render("index")
+});
 
-// Home page
+// app.use("/api/users", usersRoutes(knex));
+// Mount all resource routes
 app.get("/dishes", (req, res) => {
   console.log('getting dishes route')
   knex.select("dishes.id","dishes.name","dishes.description","dishes.price", "dishes.type")
@@ -57,22 +61,15 @@ app.get("/dishes", (req, res) => {
 });
 
 // order in progress
-app.get("/neworder", (req, res) => {
-  res.render("neworder")
+app.get("/summary", (req, res) => {
+  res.render("summary")
 });
-
-
 
 // checkout order
 app.get("/checkout", (req, res) => {
   res.render("checkout")
 });
 
-// summary page
-app.get("/", (req, res) => {
-  console.log('getting / route')
-  res.render("index")
-});
 
 app.post('/buy_me', (req, res) => {
   res.send("checkout");
