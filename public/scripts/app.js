@@ -25,6 +25,7 @@ $( function() {
       }
     })
 
+    console.log("This is local Storage: ", localStorage)
     // $.ajax({
     //   url: "/cart",
     //   type: "GET",
@@ -143,22 +144,23 @@ function summaryCart(storage) {
   const itemPrice = storage.price;
   const itemQty = storage.quantity;
 
-  const $createName = $('').addClass('').text(itemName);
-  const $createPrice = $('').addClass('').text(itemPrice);
-  const $createQty = $('').addClass('').text(itemQty);
+  const $createName = $('<p>').addClass('item1').text(itemName);
+  const $createPrice = $('<p>').addClass('item1').text(itemPrice);
+  const $createQty = $('<p>').addClass('item1').text(itemQty);
 
 
-  const $item = $('').addClass('').append($createQty)
+  const $item = $('<div>').addClass('container').append($createQty)
                                   .append($createName)
                                   .append($createPrice);
 
   return $item
 }
 
+
 function renderSummary (cart) {
   cart.forEach( (item) => {
 
-    $('').append(summaryCart(item))
+    $('.container').append(summaryCart(item))
 
   })
 }
