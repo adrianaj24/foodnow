@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 <script>
-  // console.log("This is localStorage summary: ", JSON.parse(localStorage.getItem('cart')))
+
   const myObj = JSON.parse(localStorage.getItem('cart'));
   function summaryCart(storage) {
 
@@ -24,35 +24,42 @@
     console.log("item price", itemPrice)
     console.log("item Qty", itemQty)
 
-    $item = `<a class="item1">${itemName}</a> <span class="quantity">${itemQty}</span> <span class="price">$${itemPrice}</span>`
+    $item = `<a class="item1">${itemName}</a> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
+                                  <button type="button" id="sub" class="sub">-</button>
+                                  <input type="number" id="1" value=${itemQty} min="1" max="3" />
+                                  <button type="button" id="add" class="add">+</button>
+                                  </div>`
+
     return $item
   }
 
-
 function renderSummary (cart) {
-  // console.log("this is cart", cart);
   for (var item in cart) {
-    // console.log("this is item in cart", cart[item])
     $('.container').append(summaryCart(cart[item]))
 
   }
 }
 
 $(document).ready(function () {
+
   renderSummary(myObj);
+
+
+  
+  $('.add').click(function () { 
+    if ($(this).prev().val() < 100) {
+      $(this).prev().val(+$(this).prev().val() + 1);
+    }
+  });
+  $('.sub').click(function () {
+    if ($(this).next().val() > 1) {
+      if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+    }
+  });
 });
-  // const rendering = require('./summary.js')
-  // rendering(myObj);
 
-   // renderSummary(myObj);
+$()
 
-  // for (var item in myObj){
-  //   // console.log(myObj[item]);
-  //   // console.log("myObj[item]name",myObj[item]["name"])
-  //   // const lala = $('<a>').addClass('item1').text(myObj[item]["name"]);
-  //   // $('.row').append(lala);
-  //   summaryCart(item)
-  // }
 
 </script>
   <body>
@@ -65,23 +72,17 @@ $(document).ready(function () {
                         <main>
                           <div class="col-25">
                             <div class="container">
-
                               <h4>
                                 <div>Cart</div>
+                                <!-- <div id="quatityButton">Quantity
+                                  <button type="button" id="sub" class="sub">-</button>
+                                  <input type="number" id="1" value="1" min="1" max="3" />
+                                  <button type="button" id="add" class="add">+</button>
+                                </div> -->
                                 <span class="price" style="color:black">
                                   <i class="fa fa-shopping-cart"></i>
                                 </span>
                               </h4>
-                              <a class="item1">Product 1</a> <span class="quantity">1</span> <span class="price">$15</span>
-                              <a class="item2">Product 2</a> <span class="price">$5</span>
-                              <a class="item3">Product 3</a> <span class="price">$8</span>
-                              <a class="item4">Product 4</a> <span class="price">$2</span>
-
-                              <p><a class="item1">Product 1</a> <span class="quantity">1</span> <span class="price">$15</span></p>
-                              <p><a class="item1">Product 2</a> <span class="price">$5</span></p>
-                              <p><a class="item1">Product 3</a> <span class="price">$8</span></p>
-                              <p><a class="item1">Product 4</a> <span class="price">$2</span></p>
-
                               <hr>
                               <p>Total <span class="price1" style="color:black"><b>$30</b></span></p>
                             </div>
