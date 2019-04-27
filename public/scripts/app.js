@@ -138,32 +138,35 @@ function addToCart(id, name, desc, price) {
 
 }
 
-function summaryCart(storage) {
+//   function summaryCart(storage) {
 
-  const itemName = storage.name;
-  const itemPrice = storage.price;
-  const itemQty = storage.quantity;
+//   const itemName = storage.name;
+//   const itemPrice = storage.price;
+//   const itemQty = storage.quantity;
 
-  const $createName = $('<p>').addClass('item1').text(itemName);
-  const $createPrice = $('<p>').addClass('item1').text(itemPrice);
-  const $createQty = $('<p>').addClass('item1').text(itemQty);
-
-
-  const $item = $('<div>').addClass('container').append($createQty)
-                                  .append($createName)
-                                  .append($createPrice);
-
-  return $item
-}
+//   const $createName = $('<p>').addClass('item1').text(itemName);
+//   const $createPrice = $('<p>').addClass('item1').text(itemPrice);
+//   const $createQty = $('<p>').addClass('item1').text(itemQty);
 
 
-function renderSummary (cart) {
-  cart.forEach( (item) => {
+//   const $item = $('<div>').addClass('container').append($createQty)
+//                                   .append($createName)
+//                                   .append($createPrice);
 
-    $('.container').append(summaryCart(item))
+//   return $item
+// }
 
-  })
-}
+
+// function renderSummary (cart) {
+//   for (var item in cart) {
+//     $('.container').append(summaryCart(item))
+
+//   }
+  // cart.forEach( (item) => {
+
+
+  // })
+// }
 
 
 

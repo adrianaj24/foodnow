@@ -11,31 +11,76 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
+<script>
+  // console.log("This is localStorage summary: ", JSON.parse(localStorage.getItem('cart')))
+  const myObj = JSON.parse(localStorage.getItem('cart'));
+  function summaryCart(storage) {
 
+    const itemName = storage.name;
+    const itemPrice = storage.price;
+    const itemQty = storage.quantity;
+
+    console.log("item name", itemName)
+    console.log("item price", itemPrice)
+    console.log("item Qty", itemQty)
+
+    $item = `<a class="item1">${itemName}</a> <span class="quantity">${itemQty}</span> <span class="price">$${itemPrice}</span>`
+    return $item
+  }
+
+
+function renderSummary (cart) {
+  // console.log("this is cart", cart);
+  for (var item in cart) {
+    // console.log("this is item in cart", cart[item])
+    $('.container').append(summaryCart(cart[item]))
+
+  }
+}
+
+$(document).ready(function () {
+  renderSummary(myObj);
+});
+  // const rendering = require('./summary.js')
+  // rendering(myObj);
+
+   // renderSummary(myObj);
+
+  // for (var item in myObj){
+  //   // console.log(myObj[item]);
+  //   // console.log("myObj[item]name",myObj[item]["name"])
+  //   // const lala = $('<a>').addClass('item1').text(myObj[item]["name"]);
+  //   // $('.row').append(lala);
+  //   summaryCart(item)
+  // }
+
+</script>
   <body>
       <% include partials/nav %>
-          
+
       <div class="row">
         <div class="col-75">
-          <div class="container">
+          <div class="container1">
             <form action="/action_page" method="POST">
-      
+                        <main>
                           <div class="col-25">
                             <div class="container">
-                              
+
                               <h4>
                                 <div>Cart</div>
                                 <span class="price" style="color:black">
                                   <i class="fa fa-shopping-cart"></i>
                                 </span>
                               </h4>
-                              <p><a class="item1">Product 1</a> <span class="quantity">1</span> <span class="price">$15</span></p>
-                              <p><a class="item2">Product 2</a> <span class="price">$5</span></p>
-                              <p><a class="item3">Product 3</a> <span class="price">$8</span></p>
-                              <p><a class="item4">Product 4</a> <span class="price">$2</span></p>
+                              <a class="item1">Product 1</a> <span class="quantity">1</span> <span class="price">$15</span>
+                              <a class="item2">Product 2</a> <span class="price">$5</span>
+                              <a class="item3">Product 3</a> <span class="price">$8</span>
+                              <a class="item4">Product 4</a> <span class="price">$2</span>
+
                               <hr>
                               <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
                             </div>
+                        </main>
 
                 <div class="row">
                   <div class="col-50">
@@ -46,13 +91,13 @@
                     <input type="text" id="pnumber" name="phonenumber" placeholder="Enter Phone Number">
                     <input type="submit" value="Continue to checkout" class="btn" onclick="location.href='/summary';">
                 </div>
-      
+
               </div>
             </form>
           </div>
         </div>
         </div>
-      
+
       </div>
   </body>
 </html>
