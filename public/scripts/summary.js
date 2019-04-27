@@ -8,13 +8,13 @@ var total = 0;
     const itemPrice = storage.price;
     const itemQty = storage.quantity;
 
-    console.log("item name", itemName)
-    console.log("item price", itemPrice)
-    console.log("item Qty", itemQty)
+    // console.log("item name", itemName)
+    // console.log("item price", itemPrice)
+    // console.log("item Qty", itemQty)
 
     $item = `<a class="item1">${itemName}</a> <span class="quantity">${itemQty}</span> <span class="price">$${itemPrice}</span>`
     total += itemPrice * itemQty;
-    console.log("Total is: ",total);
+    // console.log("Total is: ",total);
     return $item
   }
 
@@ -39,10 +39,32 @@ function clearCart(){
 }
 //when the page is about to close
 window.addEventListener('beforeunload', (event) => {
-  console.log("setting before close");
+  // console.log("setting before close");
   localStorage.setItem('cart', null);
   localStorage.setItem('cart', JSON.stringify(cart));
 });
+
+$( function() {
+    const $button = $(".btn");
+
+    $button.on('click', function (event) {
+      event.preventDefault();
+    // console.log("this is fname val",$('#fname').val() )
+
+      if ( $('#fname').val() === "" || $('#fname').val() === null || $('#pnumber').val() === "" || $('#pnumber').val() === null) {
+        $('.error').slideDown('slow');
+          $('.error').text("Please fill out the form")
+          console.log("I am inside the first function")
+      } else {
+        $('.error').slideUp('fast');
+        $.ajax({
+          url: '/checkout',
+          type: "get"
+        })
+      }
+
+    })
+  })
 
 $(document).ready(function () {
 
@@ -58,7 +80,6 @@ $(document).ready(function () {
     $('#count').empty();
     $('#count').append(sum);
   }
-
 
   renderSummary(myObj);
   renderTotal(total.toFixed(2));

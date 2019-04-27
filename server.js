@@ -80,13 +80,13 @@ app.get ("/cart", (req, res) => {
 app.get("/checkout", (req, res) => {
 
   // Message to be sent to the restaurant
-  client.messages.create({
-     body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
-     from: '+16477993850',
-     to: '+16478714743',
-     statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
-   })
-                .then(message => console.log("This is message from checkout: "));
+  // client.messages.create({
+  //    body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
+  //    from: '+16477993850',
+  //    to: '+16478714743',
+  //    statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
+  //  })
+  //               .then(message => console.log("This is message from checkout: "));
 
 
   res.render("checkout")
