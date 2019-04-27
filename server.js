@@ -77,7 +77,9 @@ app.get ("/cart", (req, res) => {
 })
 
 // checkout order
-app.get("/checkout", (req, res) => {
+app.post("/checkout", (req, res) => {
+  var phonenumber = req.body.phonenumber 
+  console.log("this is checkout", req.body);
 
   // Message to be sent to the restaurant
   // client.messages.create({
@@ -92,13 +94,14 @@ app.get("/checkout", (req, res) => {
   res.render("checkout")
 });
 
-
 app.post("/smsstatus", (req, res) => {
   console.log("This is the sms status: ",req.body);
 });
 
-app.post('/checkout', (req, res) => {
-  res.send("checkout");
+app.get('/checkout', (req, res) => {
+  // console.log(req.body);
+  console.log("pika pika")
+  // res.send("checkout");
 });
 
 app.post("/delete", (req, res) => {

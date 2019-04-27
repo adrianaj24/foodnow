@@ -4,17 +4,18 @@ var total = 0;
   const myObj = JSON.parse(localStorage.getItem('cart'));
   function summaryCart(storage) {
 
+    const itemId = storage.id;
     const itemName = storage.name;
     const itemPrice = storage.price;
     const itemQty = storage.quantity;
 
-    // console.log("item name", itemName)
-    // console.log("item price", itemPrice)
-    // console.log("item Qty", itemQty)
-
-    $item = `<a class="item1">${itemName}</a> <span class="quantity">${itemQty}</span> <span class="price">$${itemPrice}</span>`
+    $item = `<a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
+                                  <button type="button" id=${itemId} class="sub">-</button>
+                                  <input type="number" id="1" value=${itemQty} min="1" max="3" />
+                                  <button type="button" id=${itemId} class="add">+</button>
+                                  </div>`
+    
     total += itemPrice * itemQty;
-    // console.log("Total is: ",total);
     return $item
   }
 
@@ -26,7 +27,7 @@ function renderSummary (cart) {
   }
 }
 
-function renderTotal (total) {
+function renderTotal(total) {
   $total = `<hr><p>Total <span class="price1" style="color:black"><b>$${total}</b></span></p>`
   $('.container1').append($total)
 
@@ -49,17 +50,24 @@ $( function() {
 
     $button.on('click', function (event) {
       event.preventDefault();
-    // console.log("this is fname val",$('#fname').val() )
 
       if ( $('#fname').val() === "" || $('#fname').val() === null || $('#pnumber').val() === "" || $('#pnumber').val() === null) {
         $('.error').slideDown('slow');
           $('.error').text("Please fill out the form")
           console.log("I am inside the first function")
       } else {
+        var data = $('#submitForm').serialize()
+        // console.log(data);
         $('.error').slideUp('fast');
         $.ajax({
           url: '/checkout',
-          type: "get"
+          type: "POST",
+          data: data, 
+          success: function () {
+            console.log("something", data)
+          window.location = "/checkout"
+          }
+
         })
       }
 
@@ -82,5 +90,35 @@ $(document).ready(function () {
   }
 
   renderSummary(myObj);
+  
+  $('.add').on('click',function (event) {
+    localStorage.getItem('cart');
+    cart = JSON.parse(localStorage.getItem('cart'));
+    cart[this.id].quantity += 1 
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // renderTotal(total.toFixed(2));
+    console.log("Toal before: ",total);
+    total = total + cart[this.id].price;
+    $('.price1').text(total.toFixed(2));
+    console.log("Total after: ",total)
+    if ($(this).prev().val() < 100) {
+      $(this).prev().val(+$(this).prev().val() + 1);
+    }
+  });
+  $('.sub').click(function () {
+    localStorage.getItem('cart');
+    cart = JSON.parse(localStorage.getItem('cart'));
+    cart[this.id].quantity -= 1
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // renderTotal(total.toFixed(2));
+    console.log("Toal before: ", total);
+    total = total - cart[this.id].price;
+    $('.price1').text(total.toFixed(2));
+    console.log("Total after: ", total)
+    
+    if ($(this).next().val() > 1) {
+      $(this).next().val(+$(this).next().val() - 1);
+    }
+  });
   renderTotal(total.toFixed(2));
-});
+  });
