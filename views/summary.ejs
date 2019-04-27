@@ -9,39 +9,8 @@
     <link rel="stylesheet" href="/styles/summary.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/summary.js"></script>
-    <script>
-      const myObj = JSON.parse(localStorage.getItem('cart'));
-      function summaryCart(storage) {
-        $item = `<a class="item1">${itemName}</a> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
-                                      <button type="button" id="sub" class="sub">-</button>
-                                      <input type="number" id="1" value=${itemQty} min="1" max="3" />
-                                      <button type="button" id="add" class="add">+</button>
-                                      </div>`
-        return $item
-      }
-
-      function renderSummary (cart) {
-        for (var item in cart) {
-          $('.container').append(summaryCart(cart[item]))
-        }
-      };
-
-      $(document).ready(function () {
-        renderSummary(myObj);
-
-        $('.add').click(function () { 
-          if ($(this).prev().val() < 100) {
-            $(this).prev().val(+$(this).prev().val() + 1);
-          }
-        });
-        $('.sub').click(function () {
-          if ($(this).next().val() > 1) {
-            if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-          }
-        });
-      });
-    </script>
+    <script type="text/javascript" src="/scripts/summary.js"></script> 
+   
   </head>
   <body>
       <% include partials/nav %>
@@ -49,17 +18,12 @@
       <div class="row">
         <div class="col-75">
           <div class="container1">
-            <form action="/action_page" method="POST">
+            <form action="/checkout" id="submitForm" method="POST">
                         <main>
                           <div class="col-25">
                             <div class="container">
                               <h4>
                                 <div>Cart</div>
-                                <!-- <div id="quatityButton">Quantity
-                                  <button type="button" id="sub" class="sub">-</button>
-                                  <input type="number" id="1" value="1" min="1" max="3" />
-                                  <button type="button" id="add" class="add">+</button>
-                                </div> -->
                                 <span class="price" style="color:black">
                                   <i class="fa fa-shopping-cart"></i>
                                 </span>
@@ -76,7 +40,7 @@
                     <input type="text" id="fname" name="firstname" placeholder="Your cool name in here">
                     <label for="pnumber"><i class="phonenumber"></i> Phone Number</label>
                     <input type="text" id="pnumber" name="phonenumber" placeholder="+12345678901">
-                    <input type="submit" value="Continue to checkout" class="btn" >
+                    <input type="submit" value="Continue to checkout" class="btn">
                     <div class="error">Error Message</div>
 
                 </div>
