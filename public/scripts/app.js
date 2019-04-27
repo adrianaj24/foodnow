@@ -15,6 +15,26 @@ $(document).ready(function () {
     $('#count').append(sum);
   }
 
+$( function() {
+
+    $.ajax({
+      url: "/dishes",
+      type: "GET",
+      success: function(data) {
+        renderMenu(data);
+      }
+    })
+
+    // $.ajax({
+    //   url: "/cart",
+    //   type: "GET",
+    //   success: function (data) {
+    //     renderSummary(data);
+    //   }
+    // })
+  })
+
+
   function createDishElement (menuData) {
 
     const dishName = menuData.name;
@@ -39,7 +59,7 @@ $(document).ready(function () {
 
     const drinkName = menuData.name;
     const drinkPrice = menuData.price;
-    const drinkDesc = menuData.description; 
+    const drinkDesc = menuData.description;
 
     const $createName = $('<div>').addClass('menu-item-name').text(drinkName);
     const $createPrice = $('<div>').addClass('menu-item-price').text('$'+drinkPrice);
@@ -73,11 +93,11 @@ $(document).ready(function () {
 
   }
 
-  
-  
+
+
   function renderMenu(menuArr) {
     menuArr.forEach( (menuObj) => {
-      
+
       if (menuObj.type === 'main'){
         $('.menu-section-main').append(createDishElement(menuObj))
       } else if (menuObj.type === 'drink') {
@@ -87,18 +107,9 @@ $(document).ready(function () {
       }
     })
   }
-  
-  $( function() {
-    
-    $.ajax({
-      url: "/dishes",
-      type: "GET",
-      success: function(data) {
-        renderMenu(data);
-      }
-    })
-  })
-  
+
+
+
 });
 
 function addToCart(id, name, desc, price) {
@@ -107,7 +118,7 @@ function addToCart(id, name, desc, price) {
     cart[id].quantity += 1;
   } else {
     cart[id] = {
-      id: id, 
+      id: id,
       name: name,
       desc: desc,
       price: price,
@@ -116,7 +127,7 @@ function addToCart(id, name, desc, price) {
   }
 
   console.log(cart)
-  
+
   let sum = 0;
   for (const item in cart) {
       sum += cart[item].quantity
@@ -126,9 +137,34 @@ function addToCart(id, name, desc, price) {
 
 }
 
-function summaryCart() {
-  
+function summaryCart(storage) {
+
+  const itemName = storage.name;
+  const itemPrice = storage.price;
+  const itemQty = storage.quantity;
+
+  const $createName = $('').addClass('').text(itemName);
+  const $createPrice = $('').addClass('').text(itemPrice);
+  const $createQty = $('').addClass('').text(itemQty);
+
+
+  const $item = $('').addClass('').append($createQty)
+                                  .append($createName)
+                                  .append($createPrice);
+
+  return $item
 }
+
+function renderSummary (cart) {
+  cart.forEach( (item) => {
+
+    $('').append(summaryCart(item))
+
+  })
+}
+
+
+
 
 function clearCart(){
   localStorage.setItem('cart', null);

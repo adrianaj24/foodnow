@@ -51,7 +51,6 @@ app.use(express.static("public"));
 
 // Home Page
 app.get("/", (req, res) => {
-  console.log('getting / route')
   res.render("index")
 });
 
@@ -72,6 +71,10 @@ app.get("/dishes", (req, res) => {
 app.get("/summary", (req, res) => {
   res.render("summary")
 });
+
+app.get ("/cart", (req, res) => {
+  console.log("This is cart: ", JSON.stringify(localStorage.getItem('cart')));
+})
 
 // checkout order
 app.get("/checkout", (req, res) => {
