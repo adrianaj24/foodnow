@@ -48,7 +48,6 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-
 // Home Page
 app.get("/", (req, res) => {
   res.render("index")
@@ -69,6 +68,7 @@ app.get("/dishes", (req, res) => {
 
 // order in progress
 app.get("/summary", (req, res) => {
+
   res.render("summary")
 });
 
@@ -97,7 +97,7 @@ app.post("/smsstatus", (req, res) => {
   console.log("This is the sms status: ",req.body);
 });
 
-app.post('/buy_me', (req, res) => {
+app.post('/checkout', (req, res) => {
   res.send("checkout");
 });
 

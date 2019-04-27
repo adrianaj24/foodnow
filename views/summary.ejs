@@ -22,13 +22,14 @@
       
                           <div class="col-25">
                             <div class="container">
-                              <h4>Cart
+                              
+                              <h4>
+                                <div>Cart</div>
                                 <span class="price" style="color:black">
                                   <i class="fa fa-shopping-cart"></i>
-                                  <b>4</b>
                                 </span>
                               </h4>
-                              <p><a class="item1">Product 1</a> <span class="price">$15</span></p>
+                              <p><a class="item1">Product 1</a> <span class="quantity">1</span> <span class="price">$15</span></p>
                               <p><a class="item2">Product 2</a> <span class="price">$5</span></p>
                               <p><a class="item3">Product 3</a> <span class="price">$8</span></p>
                               <p><a class="item4">Product 4</a> <span class="price">$2</span></p>
@@ -39,10 +40,11 @@
                 <div class="row">
                   <div class="col-50">
                     <h3>Contact Information</h3>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <label for="fname"><i class="user"></i> Full Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                    <label for="pnumber"><i class="phonenumber"></i> Phone Number</label>
                     <input type="text" id="pnumber" name="phonenumber" placeholder="Enter Phone Number">
-                    <input type="submit" value="Continue to checkout" class="btn">
+                    <input type="submit" value="Continue to checkout" class="btn" onclick="location.href='/summary';">
                 </div>
       
               </div>
