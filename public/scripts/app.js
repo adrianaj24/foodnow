@@ -34,6 +34,7 @@ $( function() {
     const dishName = menuData.name;
     const dishDesc = menuData.description;
     const dishPrice = menuData.price;
+    const $dishContainer = $('<div>').addClass("dish-container");
 
     const $createName = $('<div>').addClass('menu-item-name').text(dishName);
     const $createDesc = $('<div>').addClass('menu-item-description').text(dishDesc);
@@ -44,8 +45,10 @@ $( function() {
                                                 .append($createPrice)
                                                 .append($createDesc)
                                                 .append($createButton);
+                                                
+    $dishContainer.append($dish);
 
-  return $dish
+  return $dishContainer
 
   }
 
@@ -125,7 +128,7 @@ function addToCart(id, name, desc, price) {
   let sum = 0;
   for (const item in cart) {
       sum += cart[item].quantity
-    }
+    } 
   $('#count').empty();
   $('#count').append(sum);
 
