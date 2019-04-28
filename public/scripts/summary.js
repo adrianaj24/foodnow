@@ -81,7 +81,7 @@ $( function() {
 
     } else {
       var data = $('#submitForm').serialize()
-      // console.log(data);
+
       $('.error').slideUp('fast');
       $.ajax({
         url: '/checkout',
