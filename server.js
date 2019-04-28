@@ -59,8 +59,6 @@ app.get("/dishes", (req, res) => {
   console.log('getting dishes route')
   knex.select("dishes.id","dishes.name","dishes.description","dishes.price", "dishes.type")
         .from("dishes")
-        // req.params.type
-        // .where("dishes.type","=","main")
         .then( (moreResults) => {
           res.json(moreResults)
         })
@@ -73,16 +71,13 @@ app.get("/summary", (req, res) => {
 });
 
 app.get ("/cart", (req, res) => {
-  // console.log("This is cart: ", JSON.stringify(localStorage.getItem('cart')));
 })
 
 var phonenumber = '';
 var userName = '';
-// checkout order
 app.post("/checkout", (req, res) => {
   phonenumber = req.body.phonenumber;
-  // userName = req.body.
-  console.log("this is checkout", phonenumber);
+  userName = req.firstname;
 
 
 
@@ -95,12 +90,11 @@ app.post("/smsstatus", (req, res) => {
 
 app.get('/checkout', (req, res) => {
 
-
   //Message to be sent to the restaurant
   client.messages.create({
-     body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
+     body: 'You received a new order. How will it take for the order to be ready?',
      from: '+16477993850',
-     to: '+16478714743',
+     to: '+14164580118',
      statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
    })
                 .then(message => console.log("This is message from checkout: "));
@@ -115,12 +109,11 @@ app.post("/delete", (req, res) => {
 // TWILIO API
 app.post('/sms', (req, res) => {
   //Message received from the restaurant
-  console.log("This is the req: ",req.body.Body);
   const eta = req.body.Body;
   // Sending message to the client with the ETA
 
   const promise = client.messages.create({
-     body: `Your order will be ready in ${eta} minutes`,
+     body: `Hello ${userName}, your order will be ready in ${eta} minutes`,
      from: '+16477993850',
      to: `+1${phonenumber}`,
       statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
