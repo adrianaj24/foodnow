@@ -73,22 +73,17 @@ app.get("/summary", (req, res) => {
 });
 
 app.get ("/cart", (req, res) => {
-  console.log("This is cart: ", JSON.stringify(localStorage.getItem('cart')));
+  // console.log("This is cart: ", JSON.stringify(localStorage.getItem('cart')));
 })
 
+var phonenumber = '';
+var userName = '';
 // checkout order
 app.post("/checkout", (req, res) => {
-  var phonenumber = req.body.phonenumber 
+  phonenumber = req.body.phonenumber;
+  // userName = req.body.
   console.log("this is checkout", phonenumber);
 
-  // Message to be sent to the restaurant
-  // client.messages.create({
-  //    body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
-  //    from: '+16477993850',
-  //    to: '+16478714743',
-  //    statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
-  //  })
-  //               .then(message => console.log("This is message from checkout: "));
 
 
   res.render("checkout")
@@ -99,7 +94,17 @@ app.post("/smsstatus", (req, res) => {
 });
 
 app.get('/checkout', (req, res) => {
-  // console.log(req.body);
+
+
+  //Message to be sent to the restaurant
+  client.messages.create({
+     body: 'You received a new order for : Item A, Item B, etc. How will it take for the order to be ready?',
+     from: '+16477993850',
+     to: '+16478714743',
+     statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
+   })
+                .then(message => console.log("This is message from checkout: "));
+
   res.render("checkout");
 });
 
@@ -117,7 +122,7 @@ app.post('/sms', (req, res) => {
   const promise = client.messages.create({
      body: `Your order will be ready in ${eta} minutes`,
      from: '+16477993850',
-     to: '+16478714743',
+     to: `+1${phonenumber}`,
       statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
    })
   console.log("this is promise: ", promise);

@@ -15,7 +15,7 @@ $(document).ready(function () {
     $('#count').append(sum);
   }
 
-$( function() {
+  $( function() {
 
     $.ajax({
       url: "/dishes",
@@ -24,8 +24,7 @@ $( function() {
         renderMenu(data);
       }
     })
-
-    console.log("This is local Storage: ", localStorage)
+    // console.log("This is local Storage: ", localStorage)
   })
 
 
@@ -33,19 +32,21 @@ $( function() {
 
     const dishName = menuData.name;
     const dishDesc = menuData.description;
-    const dishPrice = menuData.price;
+    const dishPrice = menuData.price.toFixed(2);
     const $dishContainer = $('<div>').addClass("dish-container");
+
 
     const $createName = $('<div>').addClass('menu-item-name').text(dishName);
     const $createDesc = $('<div>').addClass('menu-item-description').text(dishDesc);
     const $createPrice = $('<div>').addClass('menu-item-price').text('$'+dishPrice);
     const $createButton = $('<button>').addClass('btn btn-outline-secondary').attr('onclick', `addToCart(${menuData.id},'${dishName}', '${dishDesc}', ${dishPrice})`).text('Add');
 
+
   const $dish = $('<div>').addClass('menu-item').append($createName)
                                                 .append($createPrice)
                                                 .append($createDesc)
                                                 .append($createButton);
-                                                
+
     $dishContainer.append($dish);
 
   return $dishContainer
@@ -55,7 +56,7 @@ $( function() {
   function createDrinkElement (menuData) {
 
     const drinkName = menuData.name;
-    const drinkPrice = menuData.price;
+    const drinkPrice = menuData.price.toFixed(2);
     const drinkDesc = menuData.description;
 
     const $createName = $('<div>').addClass('menu-item-name').text(drinkName);
@@ -74,7 +75,7 @@ $( function() {
 
     const dessertName = menuData.name;
     const dessertDesc = menuData.description;
-    const dessertPrice = menuData.price;
+    const dessertPrice = menuData.price.toFixed(2);
 
     const $createName = $('<div>').addClass('menu-item-name').text(dessertName);
     const $createDesc = $('<div>').addClass('menu-item-description').text(dessertDesc);
@@ -97,8 +98,10 @@ $( function() {
 
       if (menuObj.type === 'main'){
         $('.menu-section-main').append(createDishElement(menuObj))
+
       } else if (menuObj.type === 'drink') {
         $('.menu-section-drinks').append(createDrinkElement(menuObj))
+
       } else if (menuObj.type === 'dessert') {
         $('.menu-section-dessert').append(createDessertElement(menuObj))
       }
@@ -111,8 +114,8 @@ $( function() {
 
 function addToCart(id, name, desc, price) {
   if (id in cart) {
-
     cart[id].quantity += 1;
+
   } else {
     cart[id] = {
       id: id,
@@ -123,15 +126,15 @@ function addToCart(id, name, desc, price) {
     }
   }
 
-  console.log(cart)
+  // console.log(cart)
 
   let sum = 0;
   for (const item in cart) {
       sum += cart[item].quantity
-    } 
+  }
+
   $('#count').empty();
   $('#count').append(sum);
-
 }
 
 
@@ -140,6 +143,7 @@ function clearCart(){
   cart = {};
   window.location.reload();
 }
+
 //when the page is about to close
 window.addEventListener('beforeunload', (event) => {
   console.log("setting before close");
