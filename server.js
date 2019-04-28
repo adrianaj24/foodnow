@@ -94,7 +94,7 @@ app.get('/checkout', (req, res) => {
   client.messages.create({
      body: 'You received a new order. How will it take for the order to be ready?',
      from: '+16477993850',
-     to: '+16478714743',
+     to: '+14164580118',
      statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
    })
                 .then(message => console.log("This is message from checkout: "));
