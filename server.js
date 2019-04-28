@@ -79,7 +79,7 @@ app.get ("/cart", (req, res) => {
 // checkout order
 app.post("/checkout", (req, res) => {
   var phonenumber = req.body.phonenumber 
-  console.log("this is checkout", req.body);
+  console.log("this is checkout", phonenumber);
 
   // Message to be sent to the restaurant
   // client.messages.create({
@@ -100,8 +100,7 @@ app.post("/smsstatus", (req, res) => {
 
 app.get('/checkout', (req, res) => {
   // console.log(req.body);
-  console.log("pika pika")
-  // res.send("checkout");
+  res.render("checkout");
 });
 
 app.post("/delete", (req, res) => {
