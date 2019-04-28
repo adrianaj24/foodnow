@@ -1,8 +1,10 @@
+
+
 var cart = {};
 
 $(document).ready(function () {
 
-  //check to see if there is a previous cart
+  // Check for pre-existing carts and store its items
   if (localStorage.getItem('cart') !== null) {
     cart = JSON.parse(localStorage.getItem('cart'))
 
@@ -17,6 +19,7 @@ $(document).ready(function () {
 
   $( function() {
 
+    // Access "/dishes" to render database items on main page
     $.ajax({
       url: "/dishes",
       type: "GET",
@@ -24,10 +27,10 @@ $(document).ready(function () {
         renderMenu(data);
       }
     })
-    // console.log("This is local Storage: ", localStorage)
   })
 
 
+  // Create HTML element for "main course" area
   function createDishElement (menuData) {
 
     const dishName = menuData.name;
@@ -53,6 +56,7 @@ $(document).ready(function () {
 
   }
 
+  // Create HTML element for "drinks" area
   function createDrinkElement (menuData) {
 
     const drinkName = menuData.name;
@@ -71,6 +75,7 @@ $(document).ready(function () {
 
   }
 
+  // Create HTML element for "dessert" area
   function createDessertElement (menuData) {
 
     const dessertName = menuData.name;
@@ -92,7 +97,7 @@ $(document).ready(function () {
   }
 
 
-
+  // Gets each item from the cart, call the proper function (based on ype of food), and then append the result of the page
   function renderMenu(menuArr) {
     menuArr.forEach( (menuObj) => {
 
@@ -108,10 +113,11 @@ $(document).ready(function () {
     })
   }
 
-
-
 });
 
+
+// Get called each time "add" button is pressed by user
+// Stores item information on cart object (set at the beginning of app.js file)
 function addToCart(id, name, desc, price) {
   if (id in cart) {
     cart[id].quantity += 1;
@@ -126,8 +132,6 @@ function addToCart(id, name, desc, price) {
     }
   }
 
-  // console.log(cart)
-
   let sum = 0;
   for (const item in cart) {
       sum += cart[item].quantity
@@ -138,13 +142,14 @@ function addToCart(id, name, desc, price) {
 }
 
 
+// Resets the localStorage to an empty object, eliminating all items on it
 function clearCart(){
   localStorage.setItem('cart', null);
   cart = {};
   window.location.reload();
 }
 
-//when the page is about to close
+// Save the cart info when the user close the window
 window.addEventListener('beforeunload', (event) => {
   console.log("setting before close");
   localStorage.setItem('cart', null);
