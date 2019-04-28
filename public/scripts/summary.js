@@ -1,7 +1,9 @@
 
 
 var total = 0;
+
   const myObj = JSON.parse(localStorage.getItem('cart'));
+
   function summaryCart(storage) {
 
     const itemId = storage.id;
@@ -14,7 +16,7 @@ var total = 0;
                                   <input type="number" id="1" value=${itemQty} min="1" max="3" />
                                   <button type="button" id=${itemId} class="add">+</button>
                                   </div>`
-    
+
     total += itemPrice * itemQty;
     return $item
   }
@@ -62,7 +64,7 @@ $( function() {
         $.ajax({
           url: '/checkout',
           type: "POST",
-          data: data, 
+          data: data,
           success: function () {
             console.log("something", data)
           window.location = "/checkout"
@@ -90,11 +92,11 @@ $(document).ready(function () {
   }
 
   renderSummary(myObj);
-  
+
   $('.add').on('click',function (event) {
     localStorage.getItem('cart');
     cart = JSON.parse(localStorage.getItem('cart'));
-    cart[this.id].quantity += 1 
+    cart[this.id].quantity += 1
     localStorage.setItem("cart", JSON.stringify(cart));
     // renderTotal(total.toFixed(2));
     console.log("Toal before: ",total);
@@ -115,7 +117,7 @@ $(document).ready(function () {
     total = total - cart[this.id].price;
     $('.price1').text(total.toFixed(2));
     console.log("Total after: ", total)
-    
+
     if ($(this).next().val() > 1) {
       $(this).next().val(+$(this).next().val() - 1);
     }
