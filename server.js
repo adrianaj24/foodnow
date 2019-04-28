@@ -82,7 +82,6 @@ var userName = '';
 app.post("/checkout", (req, res) => {
   phonenumber = req.body.phonenumber;
   // userName = req.body.
-
   console.log("this is checkout", phonenumber);
 
 
@@ -95,7 +94,7 @@ app.post("/smsstatus", (req, res) => {
 });
 
 app.get('/checkout', (req, res) => {
-  // console.log(req.body);
+
 
   //Message to be sent to the restaurant
   client.messages.create({
@@ -106,9 +105,6 @@ app.get('/checkout', (req, res) => {
    })
                 .then(message => console.log("This is message from checkout: "));
 
-
-
-  console.log("pika pika")
   res.render("checkout");
 });
 

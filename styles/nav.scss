@@ -1,5 +1,5 @@
 #nav-bar {
-        background-color: #464545;
+        background-color: darkred;
         color: #e8fdff;
         height: 120px; 
         padding-left: 2em; 
@@ -14,14 +14,16 @@
         width: 80px;
         height: 80px;
         float: left;
+        margin-top: 13px; 
         margin-right: 10px;
         left: 10px; 
 }
 
 #nav-bar .header {
         line-height: 80px;
+        color: orange;
         font-size: 200%;
-        font-weight: lighter;
+        font-weight: bolder;
         right: 2em;
 }
 

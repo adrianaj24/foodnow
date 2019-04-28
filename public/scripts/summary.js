@@ -2,6 +2,7 @@ var total = 0;
 
 const myObj = JSON.parse(localStorage.getItem('cart'));
 
+<<<<<<< HEAD
 function summaryCart(storage) {
 
   const itemId = storage.id;
@@ -87,6 +88,13 @@ $(document).ready(function () {
 
   renderSummary(myObj);
 
+
+  $('.delete').on('click', function (event) {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    delete cart[this.id];
+    window.location.reload();
+  });
+
   $('.add').on('click',function (event) {
     localStorage.getItem('cart');
     cart = JSON.parse(localStorage.getItem('cart'));
@@ -102,6 +110,7 @@ $(document).ready(function () {
     }
   });
   $('.sub').click(function () {
+
     localStorage.getItem('cart');
     cart = JSON.parse(localStorage.getItem('cart'));
     cart[this.id].quantity -= 1
@@ -113,7 +122,19 @@ $(document).ready(function () {
     console.log("Total after: ", total)
 
     if ($(this).next().val() > 1) {
-      $(this).next().val(+$(this).next().val() - 1);
+      localStorage.getItem('cart');
+      cart = JSON.parse(localStorage.getItem('cart'));
+      cart[this.id].quantity -= 1
+      localStorage.setItem("cart", JSON.stringify(cart));
+      // renderTotal(total.toFixed(2));
+      console.log("Toal before: ", total);
+      total = total - cart[this.id].price;
+      $('.price1').text(total.toFixed(2));
+      console.log("Total after: ", total)
+
+      if ($(this).next().val() > 1) {
+        $(this).next().val(+$(this).next().val() - 1);
+      }
     }
   });
   renderTotal(total.toFixed(2));
