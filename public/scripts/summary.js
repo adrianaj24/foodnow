@@ -1,8 +1,12 @@
-var total = 0;
+// Variable to be used on item's price sum
+let total = 0;
 
+// myObj represent the object containing the information for each item on the cart (local storage)
 const myObj = JSON.parse(localStorage.getItem('cart'));
 
-<<<<<<< HEAD
+// Based on the items of the cart, this function receive each item and create the HTML element for it.
+// Also make the sum of the price for each item rendered on the summary page
+// Called by 'renderSummary' function
 function summaryCart(storage) {
 
   const itemId = storage.id;
@@ -20,30 +24,33 @@ function summaryCart(storage) {
   return $item
 }
 
-
+// Gets each item from the cart, call summaryCart, and then append the result of the page
 function renderSummary (cart) {
   for (var item in cart) {
     $('.container').append(summaryCart(cart[item]))
   }
 }
 
+// Create the HTML element with the total price and append it on the page
 function renderTotal(total) {
-  $total = `<hr><p>Total <span class="price1" style="color:black"><b>$${total}</b></span></p>`
+  $total = `<hr><p>Total $<span class="price1" style="color:black"><b>${total}</b></span></p>`
   $('.container1').append($total)
 }
 
+// Resets the localStorage to an empty object, eliminating all items on it
 function clearCart(){
   localStorage.setItem('cart', null);
   cart = {};
   window.location.reload();
 }
 
-//when the page is about to close
+// Save the cart info when the user close the window
 window.addEventListener('beforeunload', (event) => {
   localStorage.setItem('cart', null);
   localStorage.setItem('cart', JSON.stringify(cart));
 });
 
+// When clicking checkout, the function below do a several checks before proceeding
 $( function() {
   const $button = $(".btn");
 
@@ -63,7 +70,7 @@ $( function() {
         type: "POST",
         data: data,
         success: function () {
-          console.log("something", data)
+          // console.log("something", data)
         window.location = "/checkout"
         }
       })
@@ -71,9 +78,10 @@ $( function() {
   })
 })
 
+
 $(document).ready(function () {
 
-  //check to see if there is a previous cart
+  // Load the cart from local storage
   if (localStorage.getItem('cart') !== null) {
     cart = JSON.parse(localStorage.getItem('cart'))
 
@@ -87,14 +95,18 @@ $(document).ready(function () {
   }
 
   renderSummary(myObj);
+  renderTotal(total.toFixed(2));
 
 
+  // Delete function to remove items from the cart
   $('.delete').on('click', function (event) {
     cart = JSON.parse(localStorage.getItem('cart'));
     delete cart[this.id];
     window.location.reload();
   });
 
+  // Add function to increase quantity of specific item
+  // Also changes the total amount
   $('.add').on('click',function (event) {
     localStorage.getItem('cart');
     cart = JSON.parse(localStorage.getItem('cart'));
@@ -109,6 +121,10 @@ $(document).ready(function () {
       $(this).prev().val(+$(this).prev().val() + 1);
     }
   });
+
+  // Subtraction function to decrease quantity of specific item
+  // Stops at quantity = 1
+  // Also changes the total amount
   $('.sub').click(function () {
 
     localStorage.getItem('cart');
@@ -137,5 +153,4 @@ $(document).ready(function () {
       }
     }
   });
-  renderTotal(total.toFixed(2));
-  });
+});
