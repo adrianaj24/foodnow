@@ -66,8 +66,8 @@ $( function() {
 
   $button.on('click', function (event) {
     event.preventDefault();
-console.log("This is the cart: ", JSON.parse(localStorage.getItem('cart')))
-    if ( JSON.parse(localStorage.getItem('cart')) === {} ) {
+
+    if ( Object.keys(JSON.parse(localStorage.getItem('cart'))).length == 0 ) {
       $('.error').slideDown('slow');
         $('.error').text("You need to choose before placing an order")
 

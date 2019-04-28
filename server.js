@@ -74,10 +74,11 @@ app.get ("/cart", (req, res) => {
 })
 
 var phonenumber = '';
-// var userName = '';
+var userName = '';
 app.post("/checkout", (req, res) => {
   phonenumber = req.body.phonenumber;
-  console.log("this is checkout", phonenumber);
+  userName = req.firstname;
+  console.log("this is req.body", req.body);
 
 
 
@@ -89,7 +90,6 @@ app.post("/smsstatus", (req, res) => {
 });
 
 app.get('/checkout', (req, res) => {
-
 
   //Message to be sent to the restaurant
   client.messages.create({
