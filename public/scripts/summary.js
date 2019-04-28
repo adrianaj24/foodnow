@@ -66,11 +66,19 @@ $( function() {
 
   $button.on('click', function (event) {
     event.preventDefault();
-
-    if ( $('#fname').val() === "" || $('#fname').val() === null || $('#pnumber').val() === "" || $('#pnumber').val() === null) {
+console.log("This is the cart: ", JSON.parse(localStorage.getItem('cart')))
+    if ( JSON.parse(localStorage.getItem('cart')) === {} ) {
       $('.error').slideDown('slow');
-        $('.error').text("Please fill out the form")
-        console.log("I am inside the first function")
+        $('.error').text("You need to choose before placing an order")
+
+    } else if ( !$('#fname').val() || !$('#fname').val() || !$('#pnumber').val() || !$('#pnumber').val() ) {
+      $('.error').slideDown('slow');
+        $('.error').text("Please fill out the form correctly")
+
+    } else if ( $('#pnumber').val().length !== 10 ) {
+      $('.error').slideDown('slow');
+        $('.error').text("The phone number must have 10 digits")
+
     } else {
       var data = $('#submitForm').serialize()
       // console.log(data);

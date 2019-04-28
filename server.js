@@ -59,8 +59,6 @@ app.get("/dishes", (req, res) => {
   console.log('getting dishes route')
   knex.select("dishes.id","dishes.name","dishes.description","dishes.price", "dishes.type")
         .from("dishes")
-        // req.params.type
-        // .where("dishes.type","=","main")
         .then( (moreResults) => {
           res.json(moreResults)
         })
@@ -73,15 +71,12 @@ app.get("/summary", (req, res) => {
 });
 
 app.get ("/cart", (req, res) => {
-  // console.log("This is cart: ", JSON.stringify(localStorage.getItem('cart')));
 })
 
 var phonenumber = '';
-var userName = '';
-// checkout order
+// var userName = '';
 app.post("/checkout", (req, res) => {
   phonenumber = req.body.phonenumber;
-  // userName = req.body.
   console.log("this is checkout", phonenumber);
 
 
