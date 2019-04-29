@@ -1,5 +1,5 @@
 #nav-bar {
-  background-color: #464545;
+  background-color: darkred;
   color: #e8fdff;
   height: 120px;
   padding-left: 2em;
@@ -10,28 +10,50 @@
   z-index: 666; }
 
 #nav-bar .logo {
+  margin-top: 1.5rem;
   width: 80px;
   height: 80px;
   float: left;
+  margin-top: 20px;
   margin-right: 10px;
   left: 10px; }
 
 #nav-bar .header {
-  line-height: 80px;
+  height: 5rem;
+  line-height: 115px;
+  color: orange;
   font-size: 200%;
-  font-weight: lighter;
+  cursor: pointer;
+  font-weight: bolder;
   right: 2em; }
 
 #nav-button {
-  background-color: #f58d04;
+  background-color: #a79696;
   border-radius: 5px;
   border: 2px solid #f4f5f4;
   color: white;
   font-weight: bold;
   float: right;
   font-size: 20px;
-  margin-top: .5em;
+  margin-top: 1.5rem;
   margin-right: 2em;
+  cursor: pointer;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none; }
+
+#nav-button1 {
+  background-color: #a79696;
+  border-radius: 5px;
+  height: 3.95rem;
+  border: 2px solid #f4f5f4;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  margin-right: 2em;
+  cursor: pointer;
   padding: 15px 32px;
   text-align: left;
   text-decoration: none; }

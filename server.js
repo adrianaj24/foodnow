@@ -46,7 +46,8 @@ app.use("/styles", sass({
   dest: __dirname + "/public/styles",
   debug: true,
   outputStyle: 'expanded'
-}));
+})); 
+app.use(express.static(__dirname + "/images/"));
 app.use(express.static("public"));
 // Home Page
 app.get("/", (req, res) => {

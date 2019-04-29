@@ -45,3 +45,6 @@
   background-color: #f0d7e6;
   color: grey;
   border: 2px solid grey; }
+
+.main-container {
+  margin-top: 100px; }

@@ -2,7 +2,7 @@
   max-width: 680px;
   margin: 0 auto;
   display: block;
-  color: rgb(92, 92, 92);
+  color: rgb(70, 65, 65);
 }
  
 .menu-section {
@@ -15,7 +15,7 @@
   display: block;
   font-weight:normal;
   margin: 20px 0; 
-  margin-top: 7rem; 
+  margin-top: 10rem; 
   text-align: Center;
 }
  
@@ -27,7 +27,7 @@
 .menu-item-name{
   font-family: helvetica;
   font-weight: bold;
-  border-bottom: 2px dotted rgb(213, 213, 213);
+  border-bottom: 2px dotted rgb(112, 108, 108);
 }
  
 .menu-item-description {
@@ -41,4 +41,13 @@
   font-weight: bold;
   font-family: arial;
   margin-top: -22px;
+}
+
+.menu-section-dessert {
+  padding-bottom: 3rem; 
+}
+
+#test {
+  background-image: url("/images/transparent_chicken_wings.png")
+
 }

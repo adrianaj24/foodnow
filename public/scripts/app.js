@@ -38,7 +38,7 @@ $( function() {
 
     const $createName = $('<div>').addClass('menu-item-name').text(dishName);
     const $createDesc = $('<div>').addClass('menu-item-description').text(dishDesc);
-    const $createPrice = $('<div>').addClass('menu-item-price').text('$'+dishPrice);
+    const $createPrice = $('<div>').addClass('menu-item-price').text('$' + dishPrice);
     const $createButton = $('<button>').addClass('btn btn-outline-secondary').attr('onclick', `addToCart(${menuData.id},'${dishName}', '${dishDesc}', ${dishPrice})`).text('Add');
 
   const $dish = $('<div>').addClass('menu-item').append($createName)
