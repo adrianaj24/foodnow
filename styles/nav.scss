@@ -11,20 +11,24 @@
 }
 
 #nav-bar .logo {
+        margin-top: 1.5rem; 
         width: 80px;
         height: 80px;
         float: left;
-        margin-top: 13px; 
+        margin-top: 20px; 
         margin-right: 10px;
         left: 10px; 
 }
 
 #nav-bar .header {
-        line-height: 80px;
+        height: 5rem;
+        line-height: 115px;
         color: orange;
         font-size: 200%;
+        cursor: pointer;
         font-weight: bolder;
         right: 2em;
+        // padding-top: 5rem; 
 }
 
 #nav-button {
@@ -35,8 +39,26 @@
         font-weight: bold; 
         float: right;
         font-size: 20px;
-        margin-top: .5em;
+        margin-top: 1.5rem;
         margin-right: 2em;
+        cursor: pointer;
+        padding: 15px 32px;
+        text-align: left;
+        text-decoration: none;
+}
+
+#nav-button1 {
+        background-color: rgb(167, 150, 150);
+        border-radius: 5px; 
+        height: 3.95rem; 
+        border: 2px solid rgb(244, 245, 244);
+        color: white;
+        font-weight: bold; 
+        float: right;
+        font-size: 20px;
+        margin-top: 1.5rem;
+        margin-right: 2em;
+        cursor: pointer;
         padding: 15px 32px;
         text-align: left;
         text-decoration: none;

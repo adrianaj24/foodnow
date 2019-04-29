@@ -1,6 +1,24 @@
 
 // Variable to be used on item's price sum
 var total = 0;
+  const myObj = JSON.parse(localStorage.getItem('cart'));
+  function summaryCart(storage) {
+
+    const itemId = storage.id;
+    const itemName = storage.name;
+    const itemPrice = storage.price;
+    const itemQty = storage.quantity;
+
+    $item = `<div id="summaryItem" <a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
+                                  <button type="button" id=${itemId} class="sub">-</button>
+                                  <input type="number" id="1" value=${itemQty} min="1" max="3" />
+                                  <button type="button" id=${itemId} class="add">+</button>
+                                  <button type="button" id=${itemId} class="delete">Delete</button>
+                                  </div></div>`
+    
+    total += itemPrice * itemQty;
+    return $item
+  }
 
 // myObj represent the object containing the information for each item on the cart (local storage)
 const myObj = JSON.parse(localStorage.getItem('cart'));
@@ -39,9 +57,14 @@ function renderSummary (cart) {
 
 // Create the HTML element with the total price and append it on the page
 function renderTotal(total) {
+<<<<<<< HEAD
   $total = `<hr><p>Total $<span class="price1" style="color:black"><b>${total}</b></span></p>`
   $('.container1').append($total)
 
+=======
+  $total = `<hr><p><span class="price1" style="color:black"><b>Total: $${total}</b></span></p>`
+  $('.container').append($total)
+>>>>>>> buttons
 }
 
 

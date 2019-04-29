@@ -35,3 +35,9 @@
   font-weight: bold;
   font-family: arial;
   margin-top: -22px; }
+
+.menu-section-dessert {
+  padding-bottom: 3rem; }
+
+#test {
+  background-image: url("/images/transparent_chicken_wings.png"); }

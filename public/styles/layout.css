@@ -11,18 +11,21 @@
 }
 
 #nav-bar .logo {
+  margin-top: 1.5rem;
   width: 80px;
   height: 80px;
   float: left;
-  margin-top: 13px;
+  margin-top: 20px;
   margin-right: 10px;
   left: 10px;
 }
 
 #nav-bar .header {
-  line-height: 80px;
+  height: 5rem;
+  line-height: 115px;
   color: orange;
   font-size: 200%;
+  cursor: pointer;
   font-weight: bolder;
   right: 2em;
 }
@@ -35,8 +38,26 @@
   font-weight: bold;
   float: right;
   font-size: 20px;
-  margin-top: .5em;
+  margin-top: 1.5rem;
   margin-right: 2em;
+  cursor: pointer;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+}
+
+#nav-button1 {
+  background-color: #a79696;
+  border-radius: 5px;
+  height: 3.95rem;
+  border: 2px solid #f4f5f4;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  margin-right: 2em;
+  cursor: pointer;
   padding: 15px 32px;
   text-align: left;
   text-decoration: none;
@@ -58,7 +79,7 @@
   max-width: 680px;
   margin: 0 auto;
   display: block;
-  color: #5c5c5c;
+  color: #464141;
 }
 
 .menu-section {
@@ -71,7 +92,7 @@
   display: block;
   font-weight: normal;
   margin: 20px 0;
-  margin-top: 7rem;
+  margin-top: 10rem;
   text-align: Center;
 }
 
@@ -83,7 +104,7 @@
 .menu-item-name {
   font-family: helvetica;
   font-weight: bold;
-  border-bottom: 2px dotted #d5d5d5;
+  border-bottom: 2px dotted #706c6c;
 }
 
 .menu-item-description {
@@ -99,9 +120,51 @@
   margin-top: -22px;
 }
 
+.menu-section-dessert {
+  padding-bottom: 3rem;
+}
+
+#test {
+  background-image: url("/images/transparent_chicken_wings.png");
+}
+
 .btn-outline-secondary {
   float: right;
   padding-top: 1rem;
+  color: #5c0303;
+}
+
+#wrapper-footer {
+  color: #e8fdff;
+  height: 120px;
+  padding-left: 2em;
+  padding-right: 2em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.footerCopyright {
+  color: #020607;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-size: 12px;
+  float: left;
+  margin: 5px 0;
+}
+
+.footerDesigner {
+  color: #020505;
+  padding-right: 1.5rem;
+  font-size: 12px;
+  float: right;
+  margin: 5px 0;
+}
+
+.main-container {
+  margin-top: 200px;
+  margin-left: 2rem;
+  margin-bottom: 300px;
 }
 
 body {
