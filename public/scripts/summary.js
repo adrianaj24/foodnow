@@ -21,29 +21,29 @@ var total = 0;
   }
 
 // myObj represent the object containing the information for each item on the cart (local storage)
-const myObj = JSON.parse(localStorage.getItem('cart'));
+// const myObj = JSON.parse(localStorage.getItem('cart'));
 
 
 // Based on the items of the cart, this function receive each item and create the HTML element for it.
 // Also make the sum of the price for each item rendered on the summary page
 // Called by 'renderSummary' function
-function summaryCart(storage) {
+// function summaryCart(storage) {
 
-  const itemId = storage.id;
-  const itemName = storage.name;
-  const itemPrice = storage.price;
-  const itemQty = storage.quantity;
+//   const itemId = storage.id;
+//   const itemName = storage.name;
+//   const itemPrice = storage.price;
+//   const itemQty = storage.quantity;
 
-  $item = `<a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
-                                <button type="button" id=${itemId} class="sub">-</button>
-                                <input type="number" id="1" value=${itemQty} min="1" max="3" />
-                                <button type="button" id=${itemId} class="add">+</button>
-                                <button type="button" id=${itemId} class="delete">Delete</button>
-                                </div>`
+//   $item = `<a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
+//                                 <button type="button" id=${itemId} class="sub">-</button>
+//                                 <input type="number" id="1" value=${itemQty} min="1" max="3" />
+//                                 <button type="button" id=${itemId} class="add">+</button>
+//                                 <button type="button" id=${itemId} class="delete">Delete</button>
+//                                 </div>`
 
-  total += itemPrice * itemQty;
-  return $item
-}
+//   total += itemPrice * itemQty;
+//   return $item
+// }
 
 
 // Gets each item from the cart, call summaryCart, and then append the result of the page
@@ -57,14 +57,8 @@ function renderSummary (cart) {
 
 // Create the HTML element with the total price and append it on the page
 function renderTotal(total) {
-<<<<<<< HEAD
-  $total = `<hr><p>Total $<span class="price1" style="color:black"><b>${total}</b></span></p>`
-  $('.container1').append($total)
-
-=======
   $total = `<hr><p><span class="price1" style="color:black"><b>Total: $${total}</b></span></p>`
   $('.container').append($total)
->>>>>>> buttons
 }
 
 
