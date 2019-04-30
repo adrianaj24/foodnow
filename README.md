@@ -30,3 +30,11 @@ The web app use Twilio API to communicate with the restaurant (SMS text) about a
 - Press enter
 - After, type: npm run knex seed:run
 - Now you should have the most up to date db
+
+## Screenshots
+
+![Main page where user can select mutiple items. Item are rendered based on database entries](https://github.com/adrianaj24/foodnow/blob/master/docs/foodnow_main_page.png)
+
+![Summary page where the user can edit (increase/decrease quantity or delete) items, go back to main page or move to checkout page](https://github.com/adrianaj24/foodnow/blob/master/docs/foodnow_summary_page.png)
+
+![Checkout page with thank you message. At this point the restaurant and the user will be notified via SMS text message](https://github.com/adrianaj24/foodnow/blob/master/docs/foodnow_checkout_page.png)
