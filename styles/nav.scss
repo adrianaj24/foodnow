@@ -71,7 +71,13 @@
 }
 
 #nav-button:hover {
-        background-color: rgb(240, 215, 230);
+        background-color: rgb(247, 247, 247);
+        color: grey;
+        border: 2px solid grey; 
+}
+
+#nav-button1:hover {
+        background-color: rgb(252, 248, 250);
         color: grey;
         border: 2px solid grey; 
 }

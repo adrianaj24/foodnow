@@ -6,7 +6,7 @@ var total = 0;
 
     const itemId = storage.id;
     const itemName = storage.name;
-    const itemPrice = storage.price;
+    const itemPrice = storage.price.toFixed(2);
     const itemQty = storage.quantity;
 
     $item = `<div id="summaryItem" <a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
@@ -57,7 +57,7 @@ function renderSummary (cart) {
 
 // Create the HTML element with the total price and append it on the page
 function renderTotal(total) {
-  $total = `<hr><p><span class="price1" style="color:black"><b>Total: $${total}</b></span></p>`
+  $total = `<hr><p>Total: $<span class="price1" style="color:black"><b>${total}</b></span></p>`
   $('.container').append($total)
 }
 

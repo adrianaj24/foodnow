@@ -70,7 +70,13 @@
 }
 
 #nav-button:hover {
-  background-color: #f0d7e6;
+  background-color: #f7f7f7;
+  color: grey;
+  border: 2px solid grey;
+}
+
+#nav-button1:hover {
+  background-color: #fcf8fa;
   color: grey;
   border: 2px solid grey;
 }
@@ -92,7 +98,7 @@
   display: block;
   font-weight: normal;
   margin: 20px 0;
-  margin-top: 10rem;
+  margin-top: 5rem;
   text-align: Center;
 }
 
@@ -124,8 +130,13 @@
   padding-bottom: 3rem;
 }
 
+.menu-section-picture {
+  width: 100%;
+  margin: 0;
+}
+
 #test {
-  background-image: url("/images/transparent_chicken_wings.png");
+  background-color: #dbd6d6;
 }
 
 .btn-outline-secondary {
@@ -165,6 +176,7 @@
   margin-top: 200px;
   margin-left: 2rem;
   margin-bottom: 300px;
+  text-align: center;
 }
 
 body {

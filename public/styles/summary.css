@@ -118,6 +118,16 @@ label {
   text-align: right;
 }
 
+.error {
+  color: red;
+  font-weight: bolder;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin: auto;
+  text-align: center;
+  font-size: 30px;
+}
+
 .itemId {
   opacity: 0;
 }
