@@ -1,56 +1,31 @@
 
 // Variable to be used on item's price sum
 var total = 0;
-  const myObj = JSON.parse(localStorage.getItem('cart'));
-  function summaryCart(storage) {
+const myObj = JSON.parse(localStorage.getItem('cart'));
 
-    const itemId = storage.id;
-    const itemName = storage.name;
-    const itemPrice = storage.price.toFixed(2);
-    const itemQty = storage.quantity;
+function summaryCart(storage) {
 
-    $item = `<div id="summaryItem" <a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
-                                  <button type="button" id=${itemId} class="sub">-</button>
-                                  <input type="number" id="1" value=${itemQty} min="1" max="3" />
-                                  <button type="button" id=${itemId} class="add">+</button>
-                                  <button type="button" id=${itemId} class="delete">Delete</button>
-                                  </div></div>`
+  const itemId = storage.id;
+  const itemName = storage.name;
+  const itemPrice = storage.price.toFixed(2);
+  const itemQty = storage.quantity;
+
+  $item = `<div id="summaryItem" <a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
+                                <button type="button" id=${itemId} class="sub">-</button>
+                                <input type="number" id="1" value=${itemQty} min="1" max="3" />
+                                <button type="button" id=${itemId} class="add">+</button>
+                                <button type="button" id=${itemId} class="delete">Delete</button>
+                                </div></div>`
     
     total += itemPrice * itemQty;
     return $item
   }
 
-// myObj represent the object containing the information for each item on the cart (local storage)
-// const myObj = JSON.parse(localStorage.getItem('cart'));
 
-
-// Based on the items of the cart, this function receive each item and create the HTML element for it.
-// Also make the sum of the price for each item rendered on the summary page
-// Called by 'renderSummary' function
-// function summaryCart(storage) {
-
-//   const itemId = storage.id;
-//   const itemName = storage.name;
-//   const itemPrice = storage.price;
-//   const itemQty = storage.quantity;
-
-//   $item = `<a class="item1">${itemName}</a> <span class="itemId">${itemId}</span> <span class="quantity"></span> <span class="price">$${itemPrice}</span><div id="quatityButton">Quantity
-//                                 <button type="button" id=${itemId} class="sub">-</button>
-//                                 <input type="number" id="1" value=${itemQty} min="1" max="3" />
-//                                 <button type="button" id=${itemId} class="add">+</button>
-//                                 <button type="button" id=${itemId} class="delete">Delete</button>
-//                                 </div>`
-
-//   total += itemPrice * itemQty;
-//   return $item
-// }
-
-
-// Gets each item from the cart, call summaryCart, and then append the result of the page
+// Gets each item from the cart, call summaryCart, and then append the result to the page
 function renderSummary (cart) {
   for (var item in cart) {
     $('.container').append(summaryCart(cart[item]))
-
   }
 }
 
@@ -105,7 +80,6 @@ $( function() {
         type: "POST",
         data: data,
         success: function () {
-          console.log("something", data)
         window.location = "/checkout"
         }
       })
@@ -143,15 +117,12 @@ $(document).ready(function () {
   // Add function to increase quantity of specific item
   // Also changes the total amount
   $('.add').on('click',function (event) {
-    localStorage.getItem('cart');
     cart = JSON.parse(localStorage.getItem('cart'));
     cart[this.id].quantity += 1
     localStorage.setItem("cart", JSON.stringify(cart));
-    // renderTotal(total.toFixed(2));
-    console.log("Toal before: ",total);
     total = total + cart[this.id].price;
     $('.price1').text(total.toFixed(2));
-    console.log("Total after: ",total)
+
     if ($(this).prev().val() < 100) {
       $(this).prev().val(+$(this).prev().val() + 1);
     }
@@ -162,15 +133,11 @@ $(document).ready(function () {
   // Also changes the total amount
   $('.sub').click(function () {
     if ($(this).next().val() > 1) {
-      localStorage.getItem('cart');
       cart = JSON.parse(localStorage.getItem('cart'));
       cart[this.id].quantity -= 1
       localStorage.setItem("cart", JSON.stringify(cart));
-      // renderTotal(total.toFixed(2));
-      console.log("Toal before: ", total);
       total = total - cart[this.id].price;
       $('.price1').text(total.toFixed(2));
-      console.log("Total after: ", total)
 
       if ($(this).next().val() > 1) {
         $(this).next().val(+$(this).next().val() - 1);

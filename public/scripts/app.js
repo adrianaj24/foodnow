@@ -1,5 +1,4 @@
 
-
 var cart = {};
 
 $(document).ready(function () {
@@ -30,7 +29,7 @@ $(document).ready(function () {
   })
 
 
-  // Create HTML element for "main course" area
+  // Create HTML element for "main" area
   function createDishElement (menuData) {
 
     const dishName = menuData.name;
@@ -116,7 +115,7 @@ $(document).ready(function () {
 });
 
 
-// Get called each time "add" button is pressed by user
+// Gets called each time the button "add" is pressed by the user
 // Stores item information on cart object (set at the beginning of app.js file)
 function addToCart(id, name, desc, price) {
   if (id in cart) {
@@ -151,7 +150,6 @@ function clearCart(){
 
 // Save the cart info when the user close the window
 window.addEventListener('beforeunload', (event) => {
-  console.log("setting before close");
   localStorage.setItem('cart', null);
   localStorage.setItem('cart', JSON.stringify(cart));
 });

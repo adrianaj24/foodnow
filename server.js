@@ -78,10 +78,7 @@ var phonenumber = '';
 var userName = '';
 app.post("/checkout", (req, res) => {
   phonenumber = req.body.phonenumber;
-  userName = req.firstname;
-
-
-
+  userName = req.body.firstname;
   res.render("checkout")
 });
 
@@ -95,11 +92,9 @@ app.get('/checkout', (req, res) => {
   client.messages.create({
      body: 'You received a new order. How will it take for the order to be ready?',
      from: '+16477993850',
-     to: '+14164580118',
-     statusCallback: 'https://fc89f917.ngrok.io/smsstatus'
+     to: '+16478714743',
    })
-                .then(message => console.log("This is message from checkout: "));
-
+                .then();
   res.render("checkout");
 });
 
@@ -111,8 +106,8 @@ app.post("/delete", (req, res) => {
 app.post('/sms', (req, res) => {
   //Message received from the restaurant
   const eta = req.body.Body;
-  // Sending message to the client with the ETA
 
+  // Sending message to the client with the ETA
   const promise = client.messages.create({
      body: `Hello ${userName}, your order will be ready in ${eta} minutes`,
      from: '+16477993850',
